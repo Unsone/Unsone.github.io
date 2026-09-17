@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赵开明 · unsone</title>
+<meta name="description" content="赵开明（Animus / unsone）— 北京航空航天大学计算机学院，研究方向：扩散模型 SNR-Timestep 自适应映射、Agent 系统、Transformer。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #faf9f6;
+    --ink: #1a1a1a;
+    --muted: #6b6b68;
+    --line: #e4e2dc;
+    --accent: #35519e;
+    --accent-soft: #b7c4e6;
+    --chip-bg: #eef1f8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #16161a;
+      --ink: #ece9e2;
+      --muted: #98958d;
+      --line: #2c2c31;
+      --accent: #90a8e8;
+      --accent-soft: #3a4568;
+      --chip-bg: #212433;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #16161a;
+    --ink: #ece9e2;
+    --muted: #98958d;
+    --line: #2c2c31;
+    --accent: #90a8e8;
+    --accent-soft: #3a4568;
+    --chip-bg: #212433;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+
+  body {
+    font-family: 'Inter', -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5.5rem 1.5rem 5rem;
+  }
+
+  h1, h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  h1 { font-size: clamp(2.1rem, 6vw, 2.7rem); line-height: 1.15; }
+
+  .role { color: var(--muted); font-size: 1.05rem; margin-top: 0.6rem; }
+
+  .curve { display: block; width: 100%; max-width: 320px; margin: 1.8rem 0 2.4rem; height: 52px; }
+  .curve path { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .curve .dot { fill: var(--accent); }
+
+  section { margin-top: 3rem; padding-top: 2.6rem; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; padding-top: 0; }
+
+  h2 { font-size: 1.3rem; margin-bottom: 1.1rem; }
+
+  p { margin: 0 0 1rem; max-width: 64ch; }
+  p:last-child { margin-bottom: 0; }
+
+  .edu-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .edu-row .school { font-weight: 600; }
+  .edu-row .period { color: var(--muted); white-space: nowrap; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.3rem; }
+  .chip {
+    background: var(--chip-bg);
+    color: var(--ink);
+    font-size: 0.85rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+  }
+
+  .skill-row { display: grid; grid-template-columns: 84px 1fr; gap: 0.8rem; margin-bottom: 0.7rem; align-items: baseline; }
+  .skill-row .label { color: var(--muted); font-size: 0.92rem; }
+  .skill-row .value { font-size: 0.98rem; }
+
+  .project {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .project h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 1.12rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .project .stack { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.7rem; }
+  .project .result { font-size: 0.95rem; color: var(--muted); border-left: 2px solid var(--accent-soft); padding-left: 0.8rem; margin-top: 0.8rem; }
+
+  .other-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .other-list li { display: grid; grid-template-columns: 1fr; gap: 0.15rem; }
+  .other-list .name { font-weight: 600; }
+  .other-list .desc { color: var(--muted); font-size: 0.94rem; }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover, a:focus-visible { border-bottom-color: var(--accent); }
+
+  .contact-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .contact-list .label { color: var(--muted); display: inline-block; width: 84px; }
+
+  footer { margin-top: 4rem; color: var(--muted); font-size: 0.9rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .curve path { stroke-dasharray: 240; stroke-dashoffset: 240; animation: draw 1.4s ease-out forwards; }
+    .curve .dot { opacity: 0; animation: fade-in 0.4s ease-out forwards; animation-delay: 1.2s; }
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes fade-in { to { opacity: 1; } }
+
+  @media (max-width: 480px){
+    main { padding: 3.5rem 1.25rem 3.5rem; }
+    .contact-list .label, .skill-row .label { width: auto; margin-right: 0.6rem; }
+    .skill-row { grid-template-columns: 1fr; gap: 0.15rem; }
+    .edu-row { flex-direction: column; gap: 0.2rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>赵开明</h1>
+  <p class="role">Beihang University · 计算机学院在读 · 寻求秋季学期日常实习</p>
+
+  <svg class="curve" viewBox="0 0 320 52" aria-hidden="true">
+    <path d="M4,44 C60,44 90,44 120,32 C150,20 160,8 200,8 C240,8 260,14 316,14" />
+    <circle class="dot" cx="120" cy="32" r="3"></circle>
+  </svg>
+
+  <section>
+    <h2>关于</h2>
+    <p>
+      北京航空航天大学计算机学院在读，有志于人工智能算法与应用方向。完成过扩散模型采样优化、Agent Harness 全流程开发、
+      Transformer 机器翻译本地实现、小目标实时检测与三维图形重建等工作，具备完整的模型训练、消融实验与工程落地能力，
+      可快速承接算法复现与模型优化类开发工作。
+    </p>
+  </section>
+
+  <section>
+    <h2>教育背景</h2>
+    <div class="edu-row">
+      <span class="school">北京航空航天大学 · 计算机学院</span>
+      <span class="period">2024.09 – 2028.06</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>专业技能</h2>
+    <div class="skill-row"><span class="label">编程语言</span><span class="value">熟悉 C/C++、Python，了解数据结构与算法；掌握 SQL。</span></div>
+    <div class="skill-row"><span class="label">深度学习</span><span class="value">PyTorch 搭建与训练 Transformer 等网络，掌握调参、消融实验、轻量化优化完整流程。</span></div>
+    <div class="skill-row"><span class="label">知识基础</span><span class="value">数学分析 93 分、离散数学 98 分；英语六级 472 分，可在英文语境下工作。</span></div>
+    <div class="skill-row"><span class="label">开发工具</span><span class="value">Linux 命令行、Git，熟悉 VS Code、PyCharm。</span></div>
+    <div class="skill-row"><span class="label">AI 辅助开发</span><span class="value">熟练使用 Claude Code、Deepseek Harness 等工具，形成完善工作流程。</span></div>
+  </section>
+
+  <section>
+    <h2>项目经历</h2>
+
+    <div class="project">
+      <h3>扩散模型数据自适应 SNR-Timestep 映射函数研究</h3>
+      <div class="stack">PyTorch · DDPM/DDIM · UNet / ViT / DiT 主干</div>
+      <p>
+        扩散模型训练与采样通常依赖人工设定的固定 SNR-timestep 映射（如线性 / cosine schedule），跨模态迁移时表现不稳定；
+        提出数据自适应、模态无关的映射函数，并基于该映射设计去噪采样的跳步优化方法。
+      </p>
+      <div class="result">相比固定 schedule 基线，平均推理耗时降低 60%+，生成精度提升 40%+。</div>
+    </div>
+
+    <div class="project">
+      <h3>安全约束的自纠错个人工作助理 Agent Harness</h3>
+      <div class="stack">Python · Function Calling 架构 · DuckDuckGo Search API</div>
+      <p>
+        实现运行在个人电脑上的日常工作辅助与自动化 Agent：由 LLM 把任务规划为结构化步骤，在安全规则约束下调用 Shell、
+        文件编辑、Obsidian 笔记、网页搜索等工具执行，并将执行记录沉淀至本地知识库，形成从任务输入到结果记录的完整闭环。
+      </p>
+      <div class="result">从零搭建 Agent 控制回路，86 个单元测试全部通过；实现双层自纠错与拒绝/确认/放行三态安全模型，命令执行全程可审计。</div>
+    </div>
+
+    <div class="project">
+      <h3>基于 Transformer 架构复现的中英机器翻译系统</h3>
+      <div class="stack">Python · PyTorch · Transformer Encoder-Decoder · 注意力机制</div>
+      <p>
+        复现原始 Transformer 论文的 Encoder-Decoder 架构，用于中英双语翻译任务；完成双语平行语料清洗、分词、批处理训练与超参调整。
+      </p>
+      <div class="result">跑通完整训练与推理流程，在小规模语料上实现可用翻译效果，吃透多头注意力机制与训练调参底层逻辑。</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>其它实践项目</h2>
+    <ul class="other-list">
+      <li>
+        <span class="name">智能激光灭蚊设备视觉检测与跟踪系统</span>
+        <span class="desc">负责蚊虫目标视觉检测与轨迹跟踪模块，完成模型训练和嵌入式端推理速度优化。</span>
+      </li>
+      <li>
+        <span class="name">LLM 驱动离散数学智能助教</span>
+        <span class="desc">搭建大模型交互式出题答疑系统，自定义 Prompt 规则，在校内小范围测试验证可用性。</span>
+      </li>
+      <li>
+        <span class="name">3DGS 三维场景重建</span>
+        <span class="desc">基于 3D Gaussian Splatting 完成实景拍摄、点云训练与新视角渲染调参。</span>
+      </li>
+      <li>
+        <span class="name">PICO VR 交互 Demo 开发</span>
+        <span class="desc">Unity 编写手部追踪交互逻辑，完成场景视觉反馈与简单交互功能调试。</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>联系方式</h2>
+    <div class="contact-list">
+      <div><span class="label">Email</span><a href="mailto:24371102@buaa.edu.cn">24371102@buaa.edu.cn</a></div>
+      <div><span class="label">GitHub</span><a href="https://github.com/unsone">github.com/unsone</a></div>
+    </div>
+  </section>
+
+  <footer>
+    Last updated 2026
+  </footer>
+
+</main>
+</body>
+</html>
