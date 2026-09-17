@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>赵开明 · unsone</title>
-<meta name="description" content="赵开明（Animus / unsone）— 北京航空航天大学计算机学院，研究方向：扩散模型 SNR-Timestep 自适应映射、Agent 系统、Transformer。">
+<meta name="description" content="赵开明（Animus / unsone）— 北京航空航天大学计算机学院。研究方向：扩散模型 SNR-Timestep 自适应映射、Agent 系统、Transformer。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,29 +17,24 @@
     --accent: #35519e;
     --accent-soft: #b7c4e6;
     --chip-bg: #eef1f8;
+    --avatar-bg: #232a3f;
+    --avatar-fg: #eef1f8;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg: #16161a;
-      --ink: #ece9e2;
-      --muted: #98958d;
-      --line: #2c2c31;
-      --accent: #90a8e8;
-      --accent-soft: #3a4568;
-      --chip-bg: #212433;
+      --bg: #16161a; --ink: #ece9e2; --muted: #98958d; --line: #2c2c31;
+      --accent: #90a8e8; --accent-soft: #3a4568; --chip-bg: #212433;
+      --avatar-bg: #2c3350; --avatar-fg: #e6e9f5;
     }
   }
   :root[data-theme="dark"]{
-    --bg: #16161a;
-    --ink: #ece9e2;
-    --muted: #98958d;
-    --line: #2c2c31;
-    --accent: #90a8e8;
-    --accent-soft: #3a4568;
-    --chip-bg: #212433;
+    --bg: #16161a; --ink: #ece9e2; --muted: #98958d; --line: #2c2c31;
+    --accent: #90a8e8; --accent-soft: #3a4568; --chip-bg: #212433;
+    --avatar-bg: #2c3350; --avatar-fg: #e6e9f5;
   }
 
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
 
   body {
@@ -49,71 +44,76 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  main {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 5.5rem 1.5rem 5rem;
-  }
+  main { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
 
-  h1, h2 {
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.4rem;
+    padding-bottom: 1.4rem;
+    margin-bottom: 2.6rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  nav a {
+    color: var(--muted);
+    border-bottom: none;
+    padding: 0.2rem 0;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--accent); }
+
+  h1, h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.01em; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.3rem); line-height: 1.2; }
+
+  .hero { display: flex; gap: 1.8rem; align-items: flex-start; margin-bottom: 2.6rem; }
+  .avatar {
+    flex: none;
+    width: 108px; height: 108px;
+    border-radius: 8px;
+    background: var(--avatar-bg);
+    color: var(--avatar-fg);
+    display: flex; align-items: center; justify-content: center;
     font-family: 'Fraunces', Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    margin: 0;
+    font-size: 2.4rem;
   }
+  .hero-text .zh-name { color: var(--muted); font-size: 1.02rem; margin-top: 0.25rem; }
+  .hero-text .role { color: var(--muted); font-size: 0.98rem; margin-top: 0.7rem; }
+  .hero-text .links { margin-top: 0.6rem; font-size: 0.95rem; display: flex; gap: 1rem; flex-wrap: wrap; }
 
-  h1 { font-size: clamp(2.1rem, 6vw, 2.7rem); line-height: 1.15; }
-
-  .role { color: var(--muted); font-size: 1.05rem; margin-top: 0.6rem; }
-
-  .curve { display: block; width: 100%; max-width: 320px; margin: 1.8rem 0 2.4rem; height: 52px; }
-  .curve path { fill: none; stroke: var(--accent); stroke-width: 1.6; }
-  .curve .dot { fill: var(--accent); }
-
-  section { margin-top: 3rem; padding-top: 2.6rem; border-top: 1px solid var(--line); }
+  section { margin-top: 3rem; padding-top: 2.4rem; border-top: 1px solid var(--line); scroll-margin-top: 1.5rem; }
   section:first-of-type { border-top: none; padding-top: 0; }
 
-  h2 { font-size: 1.3rem; margin-bottom: 1.1rem; }
+  h2 { font-size: 1.25rem; margin-bottom: 1.1rem; }
+  h2 .emoji { margin-right: 0.4rem; }
 
-  p { margin: 0 0 1rem; max-width: 64ch; }
+  p { margin: 0 0 1rem; max-width: 66ch; }
   p:last-child { margin-bottom: 0; }
+
+  .empty-note {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-style: italic;
+    padding: 1.1rem 1.2rem;
+    background: var(--chip-bg);
+    border-radius: 6px;
+    max-width: 66ch;
+  }
 
   .edu-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .edu-row .school { font-weight: 600; }
   .edu-row .period { color: var(--muted); white-space: nowrap; }
 
-  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.3rem; }
-  .chip {
-    background: var(--chip-bg);
-    color: var(--ink);
-    font-size: 0.85rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 3px;
-  }
-
   .skill-row { display: grid; grid-template-columns: 84px 1fr; gap: 0.8rem; margin-bottom: 0.7rem; align-items: baseline; }
   .skill-row .label { color: var(--muted); font-size: 0.92rem; }
   .skill-row .value { font-size: 0.98rem; }
 
-  .project {
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--line);
-  }
+  .project { padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid var(--line); }
   .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-  .project h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 500;
-    font-size: 1.12rem;
-    margin: 0 0 0.5rem;
-  }
-
+  .project h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.08rem; margin: 0 0 0.5rem; }
   .project .stack { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.7rem; }
   .project .result { font-size: 0.95rem; color: var(--muted); border-left: 2px solid var(--accent-soft); padding-left: 0.8rem; margin-top: 0.8rem; }
 
   .other-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
-  .other-list li { display: grid; grid-template-columns: 1fr; gap: 0.15rem; }
   .other-list .name { font-weight: 600; }
   .other-list .desc { color: var(--muted); font-size: 0.94rem; }
 
@@ -125,60 +125,59 @@
 
   footer { margin-top: 4rem; color: var(--muted); font-size: 0.9rem; }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .curve path { stroke-dasharray: 240; stroke-dashoffset: 240; animation: draw 1.4s ease-out forwards; }
-    .curve .dot { opacity: 0; animation: fade-in 0.4s ease-out forwards; animation-delay: 1.2s; }
-  }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
-  @keyframes fade-in { to { opacity: 1; } }
-
   @media (max-width: 480px){
-    main { padding: 3.5rem 1.25rem 3.5rem; }
+    main { padding: 2.5rem 1.25rem 3.5rem; }
+    .hero { flex-direction: column; align-items: flex-start; }
     .contact-list .label, .skill-row .label { width: auto; margin-right: 0.6rem; }
     .skill-row { grid-template-columns: 1fr; gap: 0.15rem; }
     .edu-row { flex-direction: column; gap: 0.2rem; }
+    nav { gap: 0.3rem 1rem; }
   }
 </style>
 </head>
 <body>
 <main>
 
-  <h1>赵开明</h1>
-  <p class="role">Beihang University</p>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <svg class="curve" viewBox="0 0 320 52" aria-hidden="true">
-    <path d="M4,44 C60,44 90,44 120,32 C150,20 160,8 200,8 C240,8 260,14 316,14" />
-    <circle class="dot" cx="120" cy="32" r="3"></circle>
-  </svg>
+  <div class="hero">
+    <div class="avatar">赵</div>
+    <div class="hero-text">
+      <h1>赵开明</h1>
+      <div class="zh-name">Kaiming Zhao · Animus</div>
+      <div class="role">本科在读，北京航空航天大学计算机学院 · 虚拟现实技术方向</div>
+      <div class="links">
+        <a href="mailto:24371102@buaa.edu.cn">Email</a>
+        <a href="https://github.com/unsone">GitHub</a>
+      </div>
+    </div>
+  </div>
 
-  <section>
-    <h2>关于</h2>
+  <section id="about">
+    <h2>About Me</h2>
     <p>
-      北京航空航天大学计算机学院在读，有志于人工智能算法与应用方向。完成过扩散模型采样优化、Agent Harness 全流程开发、
-      Transformer 机器翻译本地实现、小目标实时检测与三维图形重建等工作，具备完整的模型训练、消融实验与工程落地能力，
-      可快速承接算法复现与模型优化类开发工作。
+      北京航空航天大学计算机学院本科在读，主修虚拟现实技术，目前正在寻求秋季学期日常实习机会。
+      在导师指导下研究扩散模型中信噪比（SNR）与时间步的自适应映射，探索数据自适应、模态无关的时间步调度方法。
+    </p>
+    <p>
+      研究兴趣包括：<strong>Diffusion Models</strong>、<strong>Agent Systems</strong>、<strong>Transformer 架构与机器翻译</strong>。
+      同时具备计算机视觉小目标检测、三维图形重建（3D Gaussian Splatting）与 VR 交互开发经验。欢迎邮件交流或合作。
     </p>
   </section>
 
-  <section>
-    <h2>教育背景</h2>
-    <div class="edu-row">
-      <span class="school">北京航空航天大学 · 计算机学院</span>
-      <span class="period">2024.09 – 2028.06</span>
-    </div>
+  <section id="publications">
+    <h2><span class="emoji">📝</span>Publications</h2>
+    <p class="empty-note">尚无发表论文，正在整理研究成果中，敬请期待。</p>
   </section>
 
-  <section>
-    <h2>专业技能</h2>
-    <div class="skill-row"><span class="label">编程语言</span><span class="value">熟悉 C/C++、Python，了解数据结构与算法；掌握 SQL。</span></div>
-    <div class="skill-row"><span class="label">深度学习</span><span class="value">PyTorch 搭建与训练 Transformer 等网络，掌握调参、消融实验、轻量化优化完整流程。</span></div>
-    <div class="skill-row"><span class="label">知识基础</span><span class="value">数学分析 93 分、离散数学 98 分；英语六级 472 分，可在英文语境下工作。</span></div>
-    <div class="skill-row"><span class="label">开发工具</span><span class="value">Linux 命令行、Git，熟悉 VS Code、PyCharm。</span></div>
-    <div class="skill-row"><span class="label">AI 辅助开发</span><span class="value">熟练使用 Claude Code、Deepseek Harness 等工具，形成完善工作流程。</span></div>
-  </section>
-
-  <section>
-    <h2>项目经历</h2>
+  <section id="projects">
+    <h2><span class="emoji">💻</span>Projects</h2>
 
     <div class="project">
       <h3>扩散模型数据自适应 SNR-Timestep 映射函数研究</h3>
@@ -208,10 +207,8 @@
       </p>
       <div class="result">跑通完整训练与推理流程，在小规模语料上实现可用翻译效果，吃透多头注意力机制与训练调参底层逻辑。</div>
     </div>
-  </section>
 
-  <section>
-    <h2>其它实践项目</h2>
+    <p style="margin-top: 0.5rem; font-weight: 600;">其它实践项目</p>
     <ul class="other-list">
       <li>
         <span class="name">智能激光灭蚊设备视觉检测与跟踪系统</span>
@@ -232,10 +229,24 @@
     </ul>
   </section>
 
-  <section>
-    <h2>联系方式</h2>
+  <section id="skills">
+    <h2><span class="emoji">🛠</span>Skills</h2>
+    <div class="skill-row"><span class="label">编程语言</span><span class="value">熟悉 C/C++、Python，了解数据结构与算法；掌握 SQL。</span></div>
+    <div class="skill-row"><span class="label">深度学习</span><span class="value">PyTorch 搭建与训练 Transformer 等网络，掌握调参、消融实验、轻量化优化完整流程。</span></div>
+    <div class="skill-row"><span class="label">知识基础</span><span class="value">数学分析 93 分、离散数学 98 分；英语六级 472 分，可在英文语境下工作。</span></div>
+    <div class="skill-row"><span class="label">开发工具</span><span class="value">Linux 命令行、Git，熟悉 VS Code、PyCharm。</span></div>
+    <div class="skill-row"><span class="label">AI 辅助开发</span><span class="value">熟练使用 Claude Code、Deepseek Harness 等工具，形成完善工作流程。</span></div>
+
+    <div class="edu-row" style="margin-top: 1.6rem;">
+      <span class="school">教育背景：北京航空航天大学 · 计算机学院</span>
+      <span class="period">2024.09 – 2028.06</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><span class="emoji">📮</span>Contact</h2>
     <div class="contact-list">
-      <div><span class="label">Email</span><a href="mailto:24371102@buaa.edu.cn">kaimingzhao0948@gmail.com</a></div>
+      <div><span class="label">Email</span><a href="mailto:24371102@buaa.edu.cn">24371102@buaa.edu.cn</a></div>
       <div><span class="label">GitHub</span><a href="https://github.com/unsone">github.com/unsone</a></div>
     </div>
   </section>
